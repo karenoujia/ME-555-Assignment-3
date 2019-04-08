@@ -1,5 +1,5 @@
 ##### Baxter Robot Code - Assignment 3 #####
-# Taken from example code @ http://sdk.rethinkrobotics.com/wiki/Hello_Baxter
+# All code based on example code @ http://sdk.rethinkrobotics.com/wiki/Hello_Baxter
 
 ##### Step-by-step instructions #####
 ### Set-up and installation ###
@@ -27,6 +27,21 @@ limb_l = baxter_interface.Limb('left')
 # get the right limb's current joint angles
 angles_r = limb_r.joint_angles()
 angles_l = limb_l.joint_angles()
+
+# import interface and establish R/L gripper
+From baxter_interface import gripper
+
+# define grip names & calibrate
+right_grip = gripper('right')
+left_grip = gripper('left')
+right_grip.calibrate()
+left_grip.calibrate()
+
+#test open/close grippers
+right_gripper.open()
+right_gripper.close()
+left_gripper.open()
+left_gripper.close()
 
 ### Discover limb location ###
 # manually move arm to desired location
@@ -63,7 +78,8 @@ limb_r.move_to_joint_positions(neutral_r)
 limb_r.move_to_joint_positions(pickup_obj1_r)
 
 # grip object with right arm & starting position (open & close functions)
-
+right_gripper.open()
+right_gripper.close()
 
 # move right arm and object to midpoint position (above the table and near midpoint of robot's horizontal x-axis)
 limb_r.move_to_joint_positions(midpoint_r)
@@ -72,7 +88,7 @@ limb_r.move_to_joint_positions(midpoint_r)
 limb_r.move_to_joint_positions(drop_obj1_r)
 
 # drop off object with right arm @ finish location (open function only)
-limb_r.move_to_joint_positions(drop_obj1_r)
+right_gripper.open()
 
 # return right arm to midpoint then neutral position
 limb_r.move_to_joint_positions(midpoint_r)
