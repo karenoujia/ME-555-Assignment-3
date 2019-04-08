@@ -1,0 +1,16 @@
+## Python code examples to use
+
+# import interface and establish R/L gripper
+From baxter_interface import gripper
+right_grip = gripper('right')
+left_grip = gripper('left')
+
+#calibrate
+right_grip.calibrate()
+left_grip.calibrate()
+
+#test open/close grippers
+right_gripper.open()
+right_gripper.close()
+left_gripper.open()
+left_gripper.close()
