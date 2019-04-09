@@ -1,2 +1,14 @@
-import python
 import rospy
+import baxter_interface
+
+def move_arm(ang1, ang2, ang3, ang4):
+
+rospy.init_node('Hello_Baxter')
+limb_r = baxter_interface.Limb('right')
+angles_r1 = limb_r.joint_angles()
+limb_r.move_to_joint_positions(angles_r1)
+angle_r2 = limb_r.joint_angles()
+
+
+
+
